@@ -1,0 +1,45 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:5.7.17
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: shlink
+      MYSQL_DATABASE: shlink 
+      MYSQL_USER: shlink 
+      MYSQL_PASSWORD: shlink 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - 81:80
+    environment:
+      MYSQL_ROOT_PASSWORD: shlink 
+      PMA_HOST: mysql
+  webclient:
+    build: .
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - shlink 
+  shlink:
+    image: shlinkio/shlink:2.0.5
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    environment:
+      DB_DRIVER: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: shlink
+      DB_USER: shlink 
+      DB_PASSWORD: shlink 
+      SHORT_DOMAIN_HOST: localhost
+      SHORT_DOMAIN_SCHEMA: http

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "$SHLINK_SERVER_NAME",
+    "url": "$SHLINK_SERVER_URL",
+    "apiKey": "$SHLINK_SERVER_API_KEY"
+  }
+]
