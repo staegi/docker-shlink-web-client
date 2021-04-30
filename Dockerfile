@@ -1,4 +1,4 @@
-FROM shlinkio/shlink-web-client:3.0.1
+FROM shlinkio/shlink-web-client:3.1.0
 
 ENV SHLINK_SERVER_NAME local
 ENV SHLINK_SERVER_URL 'http://localhost:8080'
